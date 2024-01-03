@@ -2,6 +2,7 @@
 .terraform/
 *.tfstate
 *.tfstate.backup
+*.lock.hcl
 
 
 # Ignore any files that may contain sensitive information
