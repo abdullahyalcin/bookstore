@@ -1,0 +1,25 @@
+# docker-compose.yml
+
+version: '3'
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "database"
+      MYSQL_ROOT_PASSWORD: "Clarusway_1"
+      MYSQL_USER: "clarusway"
+      MYSQL_PASSWORD: "Clarusway_1"
+    networks:
+      - bookstore
+  web:
+    build: .
+    restart: always
+    networks:
+      - bookstore
+    ports:
+      - "80:80"
+    depends_on:
+      - bookstore
+network:
+  bookstore:
+    driver: bridge
