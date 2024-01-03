@@ -1,11 +1,12 @@
 resource "aws_instance" "instance" {
   instance_type = "t2.micro"
   ami           = data.aws_ami.al2023.id
+  key_name      = var.key-name
+  vpc_security_group_ids = [aws_security_group.sec-grp.id]
   tags = {
     Name = "Web Server of Bookstore"
   }
-  key_name = var.key-name
-  vpc_security_group_ids = [aws_security_group.sec-grp.id]
+  user_data = file("user_data.sh")
 }
 
 locals {
