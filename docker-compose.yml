@@ -11,6 +11,8 @@ services:
       MYSQL_PASSWORD: "Clarusway_1"
     networks:
       - bookstore
+    volumes:
+      - mysql-volume:/var/lib/mysql
   web:
     build: .
     restart: always
@@ -23,3 +25,5 @@ services:
 networks:
   bookstore:
     driver: bridge
+volumes:
+  mysql-volume:
